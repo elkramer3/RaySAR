@@ -1,0 +1,3 @@
+Filling the subfolders of "RaySAR" with appropritate content leads to a working link between the MATLAB part of RaySAR and the text editor of POV-Ray, where the model scene can be designed and the ray tracing process be run. 
+
+Please note that the link is only possible in Windows as the linux version of POV-Ray does not come with a dedicated text editor (any other text editor is to be used instead; ray tracing is started in the terminal via the command "povray", example: povray testscene.pov +W1000 +H1000).
