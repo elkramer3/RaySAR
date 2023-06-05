@@ -65,7 +65,7 @@ plane {
 // Insert step model to scene
 object {step_model
         translate <0,0,0> // adapt if necessary
-        rotate <0,20,0>  // adapt second value for rotation (y -> height axis)
+        rotate <0,0,0>  // adapt second value for rotation (y -> height axis)
         pigment {color White} 
         finish {reflection {0.5} ambient 0 diffuse 0.3 specular 0.7 roughness 0.005}
 }
