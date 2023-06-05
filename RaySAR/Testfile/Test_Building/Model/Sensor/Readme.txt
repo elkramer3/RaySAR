@@ -1,0 +1,1 @@
+Use this folder to store SAR-related data (meta information, SAR quick-look images, etc.). Define the link to this folder in the MATLAB GUI "RaySAR". Contents in the folder may be required for modeling and tools linke to the MATLAB GUI "Simulation_Data". 
