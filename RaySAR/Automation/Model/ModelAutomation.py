@@ -20,7 +20,7 @@ def gen_header_footer_POV(geo):
     # Input - Overpass geometry of current time step
     # Output - text for POV-Ray script file
 
-    POV_Model_filename = '/home/ekramer3/Documents/RaySAR/RaySAR/Testfile/Box_Automation/Box_Automation.pov'
+    POV_Model_filename = '/home/ekramer3/Documents/RaySAR/RaySAR/Testfile/Box_Automation/Box_Model.pov'
     fin = open(POV_Model_filename, "r") # Open POV file
     POVstr = fin.read() # Read POV file
     fin.close() # Close POV file
@@ -28,7 +28,8 @@ def gen_header_footer_POV(geo):
     # headtext = [] # Initialisation: Line to save in header of POV file
     endtext = [] # Initialisation: Line to save in end part of POV file
     
-    fout = open(POV_Model_filename, "w") # Open POV file
+    POV_Automation_filename = '/home/ekramer3/Documents/RaySAR/RaySAR/Testfile/Box_Automation/Box_Automation.pov'
+    fout = open(POV_Automation_filename, "w") # Open POV file
 
     pt = '#include "colors.inc"\n#include "finish.inc"\n\n'
     headtext = pt
@@ -104,28 +105,22 @@ def gen_header_footer_POV(geo):
 
 def run_POVRay(POVFilePath,POVFileName):
     # SAR case: Run POV-Ray to render optical image based on POV file and to generate
-    # signal contribution file based on POV file
+    # signal contribution file based on POV file 
     
-    """
-    Input:
-    aPovfile: Name of POV file
-    columns_simu: Number of columns of simulated image
-    rows_simu: Number of rows of simulated image
-    sensor: Name of sensor
-    det: Definition of input parameters (Look at class 'InputPara' in
-    'Script.py')
-    Output:
-    SAR case: Rendered optical image and contribution file which contains
-    signal contributions with coordinates and signal strengths and is
-    necessary for Rendering of SAR image in RaySAR
-    Optical case: Rendered optical image
-    Used function:
-    None
-    Used in function:
-    'GeoRayImg.Model2GeoI'
-    """
-
     # Navigate to model file directory
     cmd = 'cd ' + POVFilePath + '; ' + 'povray ' + POVFileName
     os.system(cmd)
+
+    # Remove contents of .pov model file to prepare for next observation geometry
+    
+    # For testing on windows...
+    # full_path=r"C:\Users\evank\Documents\GitHub\RaySAR\RaySAR\Testfile\Box_Automation\Box_Automation.pov"
+    
+    full_path = POVFilePath + POVFileName
+    if os.path.exists(full_path):
+        #os.remove(full_path)
+        open(full_path, 'w').close()
+    else:
+        print("The file does not exist")
+
     return
